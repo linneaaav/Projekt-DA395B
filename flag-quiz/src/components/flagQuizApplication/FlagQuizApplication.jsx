@@ -10,6 +10,8 @@ const FlagQuizApplication = () => {
 
     // useState of country used in game
     const [country, setCountry] = useState(null);
+
+    // useState to handle error message
     const [error, setError] = useState("");
 
     useEffect(() => {
