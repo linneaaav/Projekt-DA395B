@@ -67,6 +67,14 @@ const FlagQuizApplication = () => {
         setUserGuess("");
     };
 
+    if (error) {
+        return <p>{error}</p>;
+    }
+
+    if (!country) {
+        return <p>Loading...</p>;
+    }
+
     return (
         <GameInterface 
             flagUrl={country.flags.png}
@@ -77,7 +85,6 @@ const FlagQuizApplication = () => {
             onSubmitGuess={handleSubmitGuess}
             countryName={country.name.common}
             feedback={feedback}
-            score={score}
         />
     );
 };

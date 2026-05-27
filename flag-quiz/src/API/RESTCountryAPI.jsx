@@ -12,7 +12,6 @@ export async function FetchCountries(){
     } catch (err) {
         // Display error message in case of error
         console.log(err);
-        alert("Something went wrong!" + error);
     };
 };
 
