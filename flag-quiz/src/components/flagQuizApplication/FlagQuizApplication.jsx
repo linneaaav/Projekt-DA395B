@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { FetchCountries } from "../../API/RESTCountryAPI";
 import { getRandomCountry } from "../../utils/GetRandomCountry";
+import GameInterface from "../gameInterface/GameInterface";
 
 
 const FlagQuizApplication = () => {
