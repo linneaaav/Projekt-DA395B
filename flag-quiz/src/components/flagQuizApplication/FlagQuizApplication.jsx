@@ -1,42 +1,45 @@
 import { useEffect, useState } from "react";
+import { FetchCountries } from "../../API/RESTCountryAPI";
+import { getRandomCountry } from "../../utils/GetRandomCountry";
+
 
 const FlagQuizApplication = () => {
     
-    const BASE_URL = `https://restcountries.com/v3.1/`;
-
-    // Array for saving all countries
+    // useState array of all countries from API
     const [allCountries, setAllCountries] = useState([]);
 
-    // Array for setting a randomized country
-    const [country, setCountry] = useState([]);
+    // useState of country used in game
+    const [country, setCountry] = useState(null);
 
-    // String for handling error message
+    // useState to handle error message
     const [error, setError] = useState("");
 
     useEffect(() => {
-        const fetchCountries = async () => {
+        const getCountries = async () => {
             try {
-                // Fetch all countries from API
-                const response = await fetch(`${BASE_URL}all?fields=name,flags`); // Able to fetch other attributes like capital, etc.
-                const data = await response.json();
-
-                console.log(data);
-
-                // Set all countries to useState allCountries
+                // Use function FetchCountries() to get JSON-object
+                const data = await FetchCountries();
+                // All countries saved into an array
                 setAllCountries(data);
 
+                // Use function getRandomCountry() to randomize the first country
+                const firstCountry = getRandomCountry(data);
 
-            } catch (err) {
-                // Display error message in case of error
-                setError(err.message);
-                alert("Something went wrong!" + error);
-                console.log(err);
+                // Set randomized country
+                setCountry(firstCountry);
+
+            } catch(err) {
+                setError("Something went wrong! " + err.message);
             }
-        }
-        // Run function fetchCountries()
-        fetchCountries();
+        };
+        getCountries();
     }, []);
 
+    // Function to set a new country
+    const randomizeCountry = () => {
+        const newCountry = getRandomCountry(allCountries);
+        setCountry(newCountry);
+    }
 
     return (
         <div className="flex items-center">
