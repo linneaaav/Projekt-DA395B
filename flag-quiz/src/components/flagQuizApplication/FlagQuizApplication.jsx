@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { FetchCountries } from "../../API/RESTCountryAPI";
-import { getRandomCountry } from "../../utils/GetRandomCountry";
-import GameInterface from "../gameInterface/GameInterface";
+import { getRandomCountry } from "../../utils/getRandomCountry";
+import GameInterface from "../GameInterface/GameInterface";
 
 
 const FlagQuizApplication = () => {
@@ -14,6 +14,12 @@ const FlagQuizApplication = () => {
 
     // useState to handle error message
     const [error, setError] = useState("");
+
+    const [userGuess, setUserGuess] = useState("");
+
+    const [feedback, setFeedback] = useState("");
+
+    const [score, setScore] = useState(0);
 
     useEffect(() => {
         const getCountries = async () => {
@@ -40,12 +46,39 @@ const FlagQuizApplication = () => {
     const randomizeCountry = () => {
         const newCountry = getRandomCountry(allCountries);
         setCountry(newCountry);
-    }
+        setUserGuess("");
+    };
+
+    const handleSubmitGuess = (e) => {
+        e.preventDefault();
+        
+        if (userGuess.trim().toLowerCase() === "" ) {
+            setFeedback("Please enter a guess!");
+            return;
+        }
+
+        if (userGuess.trim().toLowerCase() === country.name.common.toLowerCase()) {
+            setScore(score + 1);
+            setFeedback("Correct!");
+        }   else {
+            setFeedback(`Wrong! The correct answer was ${country.name.common}.`);
+        }
+        
+        setUserGuess("");
+    };
 
     return (
-        <div className="flex items-center">
-            {/* Lägg till komponenter*/}
-        </div>
+        <GameInterface 
+            flagUrl={country.flags.png}
+            score={score}
+            flagAlt={`Flag of ${country.name.common}`}
+            userGuess={userGuess}
+            setUserGuess={setUserGuess}
+            onSubmitGuess={handleSubmitGuess}
+            countryName={country.name.common}
+            feedback={feedback}
+            score={score}
+        />
     );
 };
 
