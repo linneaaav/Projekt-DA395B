@@ -1,19 +1,32 @@
-const GameInterface = ({ flagUrl, flagAlt, userGuess, setUserGuess, onSubmitGuess, score }) => {
+
+
+
+const GameInterface = ({ country }) => {
     return (
         <main className="game-interface">
             <h1>Flag Quiz</h1>
 
+            {/* 
+                UserResult
             <section className="score-section">
                 <p>Score: {score}</p>
-            </section>
+            </section> 
+            
+            */}
             
             <section className="quiz-card">
                 <h2>Guess the flag!</h2>
 
+                {/*
+                    FlagImg
                 <div className="flag-image">
                     <img src={flagUrl} alt={flagAlt} className="flag" />
                 </div>
 
+                */}
+
+                {/*
+                    GameForm
                 <form onSubmit={onSubmitGuess} className="guess-form">
                     <input 
                         type="text"
@@ -22,7 +35,9 @@ const GameInterface = ({ flagUrl, flagAlt, userGuess, setUserGuess, onSubmitGues
                         onChange={(e) => setUserGuess(e.target.value)}
                     />
                     <button type="submit">Submit Guess</button>
-                </form>
+                </form> 
+                
+                */}
             </section>
         </main>
     );

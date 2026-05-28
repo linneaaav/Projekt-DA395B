@@ -15,11 +15,11 @@ const FlagQuizApplication = () => {
     // useState to handle error message
     const [error, setError] = useState("");
 
-    const [userGuess, setUserGuess] = useState("");
+    // const [userGuess, setUserGuess] = useState("");
 
-    const [feedback, setFeedback] = useState("");
+    // const [feedback, setFeedback] = useState("");
 
-    const [score, setScore] = useState(0);
+    // const [score, setScore] = useState(0);
 
     useEffect(() => {
         const getCountries = async () => {
@@ -49,6 +49,8 @@ const FlagQuizApplication = () => {
         setUserGuess("");
     };
 
+    /* 
+        
     const handleSubmitGuess = (e) => {
         e.preventDefault();
         
@@ -65,26 +67,19 @@ const FlagQuizApplication = () => {
         }
         
         setUserGuess("");
-    };
+    }; */
 
-    if (error) {
+    /* if (error) {
         return <p>{error}</p>;
     }
 
     if (!country) {
         return <p>Loading...</p>;
-    }
+    } */
 
     return (
         <GameInterface 
-            flagUrl={country.flags.png}
-            score={score}
-            flagAlt={`Flag of ${country.name.common}`}
-            userGuess={userGuess}
-            setUserGuess={setUserGuess}
-            onSubmitGuess={handleSubmitGuess}
-            countryName={country.name.common}
-            feedback={feedback}
+            country={country}
         />
     );
 };
