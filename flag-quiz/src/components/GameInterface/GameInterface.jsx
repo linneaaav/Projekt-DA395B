@@ -1,9 +1,19 @@
+import FlagImg from "../FlagImg/FlagImg";
 
 
+const GameInterface = ({ gameCountry }) => {
 
-const GameInterface = ({ country }) => {
+    // If country is not fetched display message:
+    if (!gameCountry) {
+        return(
+            <main className="container my-auto">
+                <h1>Loading Flag-Quiz Game...</h1>
+            </main>
+        );
+    };
+
     return (
-        <main className="game-interface">
+        <main className="container">
             <h1>Flag Quiz</h1>
 
             {/* 
@@ -14,7 +24,7 @@ const GameInterface = ({ country }) => {
             
             */}
             
-            <section className="quiz-card">
+            <section className="container-fluid py-5">
                 <h2>Guess the flag!</h2>
 
                 {/*
@@ -24,6 +34,8 @@ const GameInterface = ({ country }) => {
                 </div>
 
                 */}
+
+                <FlagImg flagUrl={gameCountry.flags.png} flagAlt={`Flag of ${gameCountry.flags.alt}`}/>
 
                 {/*
                     GameForm

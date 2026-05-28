@@ -46,11 +46,11 @@ const FlagQuizApplication = () => {
     const randomizeCountry = () => {
         const newCountry = getRandomCountry(allCountries);
         setCountry(newCountry);
-        setUserGuess("");
+        // setUserGuess("");
     };
 
     /* 
-        
+
     const handleSubmitGuess = (e) => {
         e.preventDefault();
         
@@ -78,9 +78,7 @@ const FlagQuizApplication = () => {
     } */
 
     return (
-        <GameInterface 
-            country={country}
-        />
+        <GameInterface gameCountry={country} />
     );
 };
 
