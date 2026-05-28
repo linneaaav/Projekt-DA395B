@@ -2,7 +2,7 @@ import FlagImg from "../FlagImg/FlagImg";
 import GameForm from "../GameForm/GameForm";
 import { useState } from "react";
 
-const GameInterface = ({ gameCountry, onCorrectGuess }) => {
+const GameInterface = ({ gameCountry, onCorrectGuess, onGameEnd }) => {
     
 
     // If country is not fetched display message:
@@ -35,21 +35,16 @@ const GameInterface = ({ gameCountry, onCorrectGuess }) => {
             console.log("score: ", updatedResults.length);
             onCorrectGuess();
         } else {
-            const wrongAnswer = {
-                country: gameCountry.name.common,
-                guess: guess,
-                isCorrect: false
-            };
-
             setFeedback(`Tough! The correct answer was ${gameCountry.name.common}.`);
             setGameOver(true);
 
             const updatedResults = {
                 score: results.length,
+                userGuess: guess,
+                correctAnswer: gameCountry.name.common,
             };
 
-            console.log("The correct answer was ", gameCountry.name.common);
-            console.log("results: ", updatedResults);
+            onGameEnd(updatedResults);
 
         };
     };

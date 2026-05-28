@@ -69,9 +69,13 @@ const FlagQuizApplication = () => {
     } */
 
 
+    const handleGameEnd = (updatedResults) => {
+        console.log("Game Over! ", updatedResults);
+    };
+        
     return (
         <div className="bg-gray-900 max-w-screen">
-            <GameInterface gameCountry={country} onCorrectGuess={randomizeCountry} />
+            <GameInterface gameCountry={country} onCorrectGuess={randomizeCountry} onGameEnd={handleGameEnd} />
         </div>
     );
 };
