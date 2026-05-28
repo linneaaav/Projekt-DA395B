@@ -1,19 +1,19 @@
 import FlagImg from "../FlagImg/FlagImg";
 import GameForm from "../GameForm/GameForm";
 
-const GameInterface = ({ gameCountry, onGuessSubmit }) => {
+const GameInterface = ({ gameCountry, onFormSubmit }) => {
 
     // If country is not fetched display message:
     if (!gameCountry) {
         return(
-            <main className="container my-auto">
+            <main className="my-auto">
                 <h1>Loading Flag-Quiz Game...</h1>
             </main>
         );
     };
 
     return (
-        <main className="container">
+        <div className="bg-gray-800 flex flex-col items-center h-screen">
             <h1>Flag Quiz</h1>
 
             {/* 
@@ -24,7 +24,7 @@ const GameInterface = ({ gameCountry, onGuessSubmit }) => {
             
             */}
             
-            <section className="container-fluid py-5">
+            <section className="py-5 bg-gray-700 w-lg">
                 <h2>Guess the flag!</h2>
 
                 {/*
@@ -50,10 +50,10 @@ const GameInterface = ({ gameCountry, onGuessSubmit }) => {
                 </form> 
                 
                 */}
-                <GameForm countryName={gameCountry.name.common} onGuessSubmit={onGuessSubmit} />
+                <GameForm countryName={gameCountry.name.common} onFormSubmit={onFormSubmit} />
 
             </section>
-        </main>
+        </div>
     );
 };
 

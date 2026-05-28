@@ -16,27 +16,21 @@ const GameForm = ({ countryName, onFormSubmit }) => {
         setUserGuess("");
     };
 
-    // Controls user input is not empty
-    const isInputEmpty = userGuess.trim() === "";
-
     return(
-        <form onSubmit={onSubmitGuess}>
+        <form onSubmit={onSubmitGuess} className="w-full max-w-md mx-auto space-y-4">
             <div className="mb-3">
                 <input 
                     type="text" 
-                    className="form-control is-valid" 
+                    className="w-xs my-2 px-4 py-2 border border-gray rounded-md bg-gray-800 text-white" 
                     placeholder="Name the country..." 
                     value={userGuess}
                     onChange={(e) => setUserGuess(e.target.value)}
                     required
                 />
-                <div className="invalid-feedback">
-                    Please enter a country!
-                </div>
             </div>
             <button 
                 type="submit" 
-                className="btn btn-success">
+                className="w-xs py-2 bg-lime-500 hover:opacity-70 border border-gray text-black rounded-md cursor-pointer">
                     Guess!
             </button>
         </form>

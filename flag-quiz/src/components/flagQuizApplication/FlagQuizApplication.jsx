@@ -84,7 +84,9 @@ const FlagQuizApplication = () => {
     } */
 
     return (
-        <GameInterface gameCountry={country} onGuessSubmit={handleSubmitGuess} />
+        <div className="bg-gray-900 max-w-screen">
+            <GameInterface gameCountry={country} onFormSubmit={handleSubmitGuess} />
+        </div>
     );
 };
 
