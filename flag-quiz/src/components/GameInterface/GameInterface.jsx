@@ -16,6 +16,7 @@ const GameInterface = ({ gameCountry, onCorrectGuess }) => {
 
     const [results, setResults] = useState([]);
     const [feedback, setFeedback] = useState("");
+    const [gameOver, setGameOver] = useState(false);
 
     const handleResult = (guess) => {
         if (guess.trim().toLowerCase() === gameCountry.name.common.trim().toLowerCase()){
@@ -26,24 +27,39 @@ const GameInterface = ({ gameCountry, onCorrectGuess }) => {
             };
 
             const updatedResults = [...results, answer];
+            
             setResults(updatedResults);
-            onCorrectGuess();
             setFeedback("Correct!");
 
             console.log("correct");
-            console.log("results: ", updatedResults);
+            console.log("score: ", updatedResults.length);
+            onCorrectGuess();
         } else {
-            const answer = {
+            const wrongAnswer = {
                 country: gameCountry.name.common,
                 guess: guess,
                 isCorrect: false
             };
-            const updatedResults = [...results, answer];
-            setFeedback(`Wrong! The correct answer was ${gameCountry.name.common}.`);
-            console.log("Wrong! The correct answer was ", gameCountry.name.common);
+
+            setFeedback(`Tough! The correct answer was ${gameCountry.name.common}.`);
+            setGameOver(true);
+
+            const updatedResults = {
+                score: results.length,
+            };
+
+            console.log("The correct answer was ", gameCountry.name.common);
             console.log("results: ", updatedResults);
-        }
+
+        };
     };
+
+    const restartGame = () => {
+        setResults([]);
+        setFeedback("");
+        setGameOver(false);
+        onCorrectGuess();
+    }
 
     return (
         <div className="bg-gray-800 flex flex-col items-center h-screen">
@@ -83,8 +99,11 @@ const GameInterface = ({ gameCountry, onCorrectGuess }) => {
                 </form> 
                 
                 */}
-                <GameForm countryName={gameCountry.name.common} onFormSubmit={handleResult} />
+               {!gameOver && <GameForm countryName={gameCountry.name.common} onFormSubmit={handleResult} />}
+                
+                {feedback && <p className="feedback">{feedback}</p>}
 
+                {gameOver && <button onClick={restartGame} className="w-xs py-2 bg-blue-500 hover:opacity-70 border border-gray text-black rounded-md cursor-pointer">Play Again</button>}
             </section>
         </div>
     );
