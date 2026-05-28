@@ -70,7 +70,7 @@ const FlagQuizApplication = () => {
 
     return (
         <div className="bg-gray-900 max-w-screen">
-            <GameInterface gameCountry={country} />
+            <GameInterface gameCountry={country} onCorrectGuess={randomizeCountry} />
         </div>
     );
 };
