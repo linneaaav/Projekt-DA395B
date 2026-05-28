@@ -13,7 +13,9 @@ const GameInterface = ({ gameCountry }) => {
     };
 
     const handleResult = (guess) => {
-        if (guess.trim().toLowerCase() === gameCountry.name.common.toLowerCase)
+        if (guess.trim().toLowerCase() === gameCountry.name.common.trim().toLowerCase()){
+            
+        }
     };
 
     return (
