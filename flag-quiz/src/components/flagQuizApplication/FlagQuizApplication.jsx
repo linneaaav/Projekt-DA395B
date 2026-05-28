@@ -15,12 +15,6 @@ const FlagQuizApplication = () => {
     // useState to handle error message
     const [error, setError] = useState("");
 
-    // const [userGuess, setUserGuess] = useState("");
-
-    // const [feedback, setFeedback] = useState("");
-
-    // const [score, setScore] = useState(0);
-
     useEffect(() => {
         const getCountries = async () => {
             try {
@@ -46,13 +40,6 @@ const FlagQuizApplication = () => {
     const randomizeCountry = () => {
         const newCountry = getRandomCountry(allCountries);
         setCountry(newCountry);
-        // setUserGuess("");
-    };
-
-    const handleSubmitGuess = (userGuess) => {
-        console.log("User guessed: ", guess);
-
-        /* Tar emot userGuess och hanterar resultatet */
     };
 
     /* 
@@ -71,8 +58,6 @@ const FlagQuizApplication = () => {
         }   else {
             setFeedback(`Wrong! The correct answer was ${country.name.common}.`);
         }
-        
-        setUserGuess("");
     }; */
 
     /* if (error) {
@@ -85,7 +70,7 @@ const FlagQuizApplication = () => {
 
     return (
         <div className="bg-gray-900 max-w-screen">
-            <GameInterface gameCountry={country} onFormSubmit={handleSubmitGuess} />
+            <GameInterface gameCountry={country} />
         </div>
     );
 };

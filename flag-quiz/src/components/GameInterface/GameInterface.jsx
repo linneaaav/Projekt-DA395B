@@ -1,7 +1,7 @@
 import FlagImg from "../FlagImg/FlagImg";
 import GameForm from "../GameForm/GameForm";
 
-const GameInterface = ({ gameCountry, onFormSubmit }) => {
+const GameInterface = ({ gameCountry }) => {
 
     // If country is not fetched display message:
     if (!gameCountry) {
@@ -10,6 +10,10 @@ const GameInterface = ({ gameCountry, onFormSubmit }) => {
                 <h1>Loading Flag-Quiz Game...</h1>
             </main>
         );
+    };
+
+    const handleResult = (guess) => {
+        if (guess.trim().toLowerCase() === gameCountry.name.common.toLowerCase)
     };
 
     return (
@@ -50,7 +54,7 @@ const GameInterface = ({ gameCountry, onFormSubmit }) => {
                 </form> 
                 
                 */}
-                <GameForm countryName={gameCountry.name.common} onFormSubmit={onFormSubmit} />
+                <GameForm countryName={gameCountry.name.common} onFormSubmit={handleResult} />
 
             </section>
         </div>
