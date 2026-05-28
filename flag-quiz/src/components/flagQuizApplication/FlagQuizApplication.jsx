@@ -49,6 +49,12 @@ const FlagQuizApplication = () => {
         // setUserGuess("");
     };
 
+    const handleSubmitGuess = (userGuess) => {
+        console.log("User guessed: ", guess);
+
+        /* Tar emot userGuess och hanterar resultatet */
+    };
+
     /* 
 
     const handleSubmitGuess = (e) => {
@@ -78,7 +84,7 @@ const FlagQuizApplication = () => {
     } */
 
     return (
-        <GameInterface gameCountry={country} />
+        <GameInterface gameCountry={country} onGuessSubmit={handleSubmitGuess} />
     );
 };
 
