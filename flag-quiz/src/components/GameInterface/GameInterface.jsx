@@ -36,7 +36,7 @@ const GameInterface = ({ gameCountry, onCorrectGuess, onGameEnd }) => {
             setResults(updatedResults);
 
             // Gives user feedback of result
-            setFeedback("Correct!");
+            setFeedback(`${guess} was correct!`);
 
             // Shows results in console
             console.log("correct");
@@ -47,7 +47,7 @@ const GameInterface = ({ gameCountry, onCorrectGuess, onGameEnd }) => {
         } else {
 
             // User feedback with a incorrect answer
-            setFeedback(`Tough! The correct answer was ${gameCountry.name.common}.`);
+            setFeedback(`Tough! ${guess} is not correct... \n The correct answer was ${gameCountry.name.common}.`);
 
             setGameOver(true);
 
@@ -81,11 +81,12 @@ const GameInterface = ({ gameCountry, onCorrectGuess, onGameEnd }) => {
 
                 <FlagImg flagUrl={gameCountry.flags.png} flagAlt={`Flag of ${gameCountry.flags.alt}`}/>
 
+                {feedback && <p className={gameOver ? "py-3 text-red-600 font-semibold text-xl whitespace-pre-line" : "py-3 text-green-600 font-semibold text-xl"}>{feedback}</p>}
+
                 {!gameOver && <GameForm countryName={gameCountry.name.common} onFormSubmit={handleResult} />}
-                
-                {feedback && <p className={gameOver ? "py-3 text-red-600 font-semibold text-xl" : "py-3 text-green-600 font-semibold text-xl"}>{feedback}</p>}
 
                 {gameOver && <button onClick={restartGame} className="w-xs py-2 bg-blue-500 hover:opacity-70 border border-gray text-black text-xl rounded-md cursor-pointer">Play Again</button>}
+                
             </section>
         </div>
     );
