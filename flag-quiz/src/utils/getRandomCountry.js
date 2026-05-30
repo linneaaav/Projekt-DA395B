@@ -1,5 +1,5 @@
 /* Returns randomized country from an array with more than one country */
-export const getRandomCountry = async (countriesList) => {
+export const getRandomCountry = (countriesList) => {
     // If array is empty return null
     if (!countriesList || countriesList.length === 0) return null;
 

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { FetchCountries } from "../../API/RESTCountryAPI";
-import { getRandomCountry } from "../../utils/GetRandomCountry";
+import { getRandomCountry } from "../../utils/getRandomCountry";
+import GameInterface from "../GameInterface/GameInterface";
 
 
 const FlagQuizApplication = () => {
@@ -39,11 +40,15 @@ const FlagQuizApplication = () => {
     const randomizeCountry = () => {
         const newCountry = getRandomCountry(allCountries);
         setCountry(newCountry);
-    }
+    };
 
+    const handleGameEnd = (updatedResults) => {
+        console.log("Game Over! ", updatedResults);
+    };
+        
     return (
-        <div className="flex items-center">
-            {/* Lägg till komponenter*/}
+        <div className="bg-gray-900 max-w-screen">
+            <GameInterface gameCountry={country} onCorrectGuess={randomizeCountry} onGameEnd={handleGameEnd} />
         </div>
     );
 };
