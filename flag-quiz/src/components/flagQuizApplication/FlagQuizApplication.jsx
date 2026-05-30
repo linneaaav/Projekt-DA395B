@@ -42,33 +42,6 @@ const FlagQuizApplication = () => {
         setCountry(newCountry);
     };
 
-    /* 
-
-    const handleSubmitGuess = (e) => {
-        e.preventDefault();
-        
-        if (userGuess.trim().toLowerCase() === "" ) {
-            setFeedback("Please enter a guess!");
-            return;
-        }
-
-        if (userGuess.trim().toLowerCase() === country.name.common.toLowerCase()) {
-            setScore(score + 1);
-            setFeedback("Correct!");
-        }   else {
-            setFeedback(`Wrong! The correct answer was ${country.name.common}.`);
-        }
-    }; */
-
-    /* if (error) {
-        return <p>{error}</p>;
-    }
-
-    if (!country) {
-        return <p>Loading...</p>;
-    } */
-
-
     const handleGameEnd = (updatedResults) => {
         console.log("Game Over! ", updatedResults);
     };

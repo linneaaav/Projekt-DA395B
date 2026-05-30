@@ -3,7 +3,6 @@ import GameForm from "../GameForm/GameForm";
 import { useState } from "react";
 
 const GameInterface = ({ gameCountry, onCorrectGuess, onGameEnd }) => {
-    
 
     // If country is not fetched display message:
     if (!gameCountry) {
@@ -14,10 +13,16 @@ const GameInterface = ({ gameCountry, onCorrectGuess, onGameEnd }) => {
         );
     };
 
+    // useState of game results
     const [results, setResults] = useState([]);
+
+    // User feedback during game
     const [feedback, setFeedback] = useState("");
+
+    // Game round useState
     const [gameOver, setGameOver] = useState(false);
 
+    // Handle user result (if correct or wrong)
     const handleResult = (guess) => {
         if (guess.trim().toLowerCase() === gameCountry.name.common.trim().toLowerCase()){
             const answer = {
@@ -26,29 +31,40 @@ const GameInterface = ({ gameCountry, onCorrectGuess, onGameEnd }) => {
                 isCorrect: true
             };
 
+            // Updates result and saves it 
             const updatedResults = [...results, answer];
-            
             setResults(updatedResults);
+
+            // Gives user feedback of result
             setFeedback("Correct!");
 
+            // Shows results in console
             console.log("correct");
             console.log("score: ", updatedResults.length);
+
+            // Randomizes a new country
             onCorrectGuess();
         } else {
+
+            // User feedback with a incorrect answer
             setFeedback(`Tough! The correct answer was ${gameCountry.name.common}.`);
+
             setGameOver(true);
 
+            // Updates result with user result and correct answer
             const updatedResults = {
                 score: results.length,
                 userGuess: guess,
                 correctAnswer: gameCountry.name.common,
             };
 
+            // Handles end game 
             onGameEnd(updatedResults);
 
         };
     };
 
+    // Reset user stats
     const restartGame = () => {
         setResults([]);
         setFeedback("");
@@ -59,42 +75,13 @@ const GameInterface = ({ gameCountry, onCorrectGuess, onGameEnd }) => {
     return (
         <div className="bg-gray-800 flex flex-col items-center h-screen">
             <h1>Flag Quiz</h1>
-
-            {/* 
-                UserResult
-            <section className="score-section">
-                <p>Score: {score}</p>
-            </section> 
-            
-            */}
             
             <section className="py-5 bg-gray-700 w-lg">
                 <h2>Guess the flag!</h2>
 
-                {/*
-                    FlagImg
-                <div className="flag-image">
-                    <img src={flagUrl} alt={flagAlt} className="flag" />
-                </div>
-
-                */}
-
                 <FlagImg flagUrl={gameCountry.flags.png} flagAlt={`Flag of ${gameCountry.flags.alt}`}/>
 
-                {/*
-                    GameForm
-                <form onSubmit={onSubmitGuess} className="guess-form">
-                    <input 
-                        type="text"
-                        placeholder="Enter your guess..."
-                        value={userGuess}
-                        onChange={(e) => setUserGuess(e.target.value)}
-                    />
-                    <button type="submit">Submit Guess</button>
-                </form> 
-                
-                */}
-               {!gameOver && <GameForm countryName={gameCountry.name.common} onFormSubmit={handleResult} />}
+                {!gameOver && <GameForm countryName={gameCountry.name.common} onFormSubmit={handleResult} />}
                 
                 {feedback && <p className="feedback">{feedback}</p>}
 
