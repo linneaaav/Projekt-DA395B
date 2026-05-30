@@ -83,9 +83,9 @@ const GameInterface = ({ gameCountry, onCorrectGuess, onGameEnd }) => {
 
                 {!gameOver && <GameForm countryName={gameCountry.name.common} onFormSubmit={handleResult} />}
                 
-                {feedback && <p className="feedback">{feedback}</p>}
+                {feedback && <p className={gameOver ? "py-3 text-red-600 font-semibold text-xl" : "py-3 text-green-600 font-semibold text-xl"}>{feedback}</p>}
 
-                {gameOver && <button onClick={restartGame} className="w-xs py-2 bg-blue-500 hover:opacity-70 border border-gray text-black rounded-md cursor-pointer">Play Again</button>}
+                {gameOver && <button onClick={restartGame} className="w-xs py-2 bg-blue-500 hover:opacity-70 border border-gray text-black text-xl rounded-md cursor-pointer">Play Again</button>}
             </section>
         </div>
     );

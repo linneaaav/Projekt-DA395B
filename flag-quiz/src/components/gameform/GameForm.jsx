@@ -30,7 +30,7 @@ const GameForm = ({ countryName, onFormSubmit }) => {
             </div>
             <button 
                 type="submit" 
-                className="w-xs py-2 bg-lime-500 hover:opacity-70 border border-gray text-black rounded-md cursor-pointer">
+                className="w-xs py-2 bg-blue-500 hover:opacity-70 border border-gray text-black rounded-md cursor-pointer">
                     Guess!
             </button>
         </form>
