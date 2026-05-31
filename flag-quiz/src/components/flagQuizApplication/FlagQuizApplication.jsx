@@ -68,7 +68,13 @@ const FlagQuizApplication = () => {
     };
         
     return (
-        <div className="bg-gray-900 max-w-screen">
+        <div className="bg-gray-900 max-w-screen flex flex-col items-center">
+            <section className="w-full max-w-lg rounded-xl border border-yellow-500 bg-gray-800 p-4 m-4">
+                <p className="text-sm uppercase tracking-wide">
+                    <span className="text-gray">Highscore: </span> 
+                    <span className="text-yellow-600 font-bold">{highscore}</span>
+                </p>
+            </section>
             <GameInterface gameCountry={country} onCorrectGuess={randomizeCountry} onGameEnd={handleGameEnd} />
         </div>
     );

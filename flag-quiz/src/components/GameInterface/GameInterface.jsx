@@ -75,6 +75,13 @@ const GameInterface = ({ gameCountry, onCorrectGuess, onGameEnd }) => {
     return (
         <div className="bg-gray-800 flex flex-col items-center h-screen">
             <h1>Flag Quiz</h1>
+
+            <section className="w-full max-w-lg rounded-xl border border-blue-500 bg-gray-800 p-4 m-4">
+                <p className="text-sm uppercase tracking-wide">
+                    <span className="text-gray">Points: </span>
+                    <span className="text-green-600 font-bold">{results.length}</span>
+                </p>
+            </section>
             
             <section className="py-5 bg-gray-700 w-lg">
                 <h2>Guess the flag!</h2>
