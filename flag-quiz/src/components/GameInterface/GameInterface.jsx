@@ -21,6 +21,8 @@ const GameInterface = ({ gameCountry, onCorrectGuess, onGameEnd }) => {
 
     // Game round useState
     const [gameOver, setGameOver] = useState(false);
+    
+    const [finalScore, setFinalScore] = useState(0);
 
     // Handle user result (if correct or wrong)
     const handleResult = (guess) => {
@@ -52,8 +54,11 @@ const GameInterface = ({ gameCountry, onCorrectGuess, onGameEnd }) => {
             setGameOver(true);
 
             // Updates result with user result and correct answer
+            const score = results.length;
+            setFinalScore(score);
+
             const updatedResults = {
-                score: results.length,
+                score: score,
                 userGuess: guess,
                 correctAnswer: gameCountry.name.common,
             };
@@ -92,8 +97,17 @@ const GameInterface = ({ gameCountry, onCorrectGuess, onGameEnd }) => {
 
                 {!gameOver && <GameForm countryName={gameCountry.name.common} onFormSubmit={handleResult} />}
 
-                {gameOver && <button onClick={restartGame} className="w-xs py-2 bg-blue-500 hover:opacity-70 border border-gray text-black text-xl rounded-md cursor-pointer">Play Again</button>}
-                
+                {gameOver && (
+                    <div>
+                        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={restartGame}>Play Again</button>
+                            <section className="w-full max-w-lg rounded-xl border border-red-500 bg-gray-800 p-4 mt-6">
+                                <p className="text-sm uppercase tracking-wide">
+                                    <span className="text-lightgray-600">final score: </span>
+                                    <span className="text-red-500 font-bold">{finalScore}</span>
+                                </p>
+                            </section>
+                    </div>
+                )}
             </section>
         </div>
     );
