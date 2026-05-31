@@ -81,12 +81,14 @@ const GameInterface = ({ gameCountry, onCorrectGuess, onGameEnd }) => {
         <div className="bg-gray-800 flex flex-col items-center h-screen">
             <h1>Flag Quiz</h1>
 
-            <section className="w-full max-w-lg rounded-xl border border-blue-500 bg-gray-800 p-4 m-4">
-                <p className="text-sm uppercase tracking-wide">
-                    <span className="text-lightgray-600">Points: </span>
-                    <span className="text-green-600 font-bold">{results.length}</span>
-                </p>
-            </section>
+            {!gameOver && (
+                <section className="w-full max-w-lg rounded-xl border border-blue-500 bg-gray-800 p-4 m-4">
+                    <p className="text-sm uppercase tracking-wide">
+                        <span className="text-lightgray-600">Points: </span>
+                        <span className="text-green-600 font-bold">{results.length}</span>
+                    </p>
+                </section>
+            )}
             
             <section className="py-5 bg-gray-700 w-lg">
                 <h2>Guess the flag!</h2>
@@ -99,7 +101,7 @@ const GameInterface = ({ gameCountry, onCorrectGuess, onGameEnd }) => {
 
                 {gameOver && (
                     <div>
-                        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={restartGame}>Play Again</button>
+                        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer" onClick={restartGame}>Play Again</button>
                             <section className="w-full max-w-lg rounded-xl border border-red-500 bg-gray-800 p-4 mt-6">
                                 <p className="text-sm uppercase tracking-wide">
                                     <span className="text-lightgray-600">final score: </span>
