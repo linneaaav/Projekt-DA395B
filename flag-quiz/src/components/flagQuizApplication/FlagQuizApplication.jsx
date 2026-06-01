@@ -75,7 +75,7 @@ const FlagQuizApplication = () => {
                     <span className="text-yellow-600 font-bold">{highscore}</span>
                 </p>
             </section>
-            <GameInterface gameCountry={country} onCorrectGuess={randomizeCountry} onGameEnd={handleGameEnd} />
+            <GameInterface gameCountry={country} onCorrectGuess={randomizeCountry} onGameEnd={handleGameEnd} highscore={highscore} />
         </div>
     );
 };

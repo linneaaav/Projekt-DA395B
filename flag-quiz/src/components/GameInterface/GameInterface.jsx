@@ -2,7 +2,7 @@ import FlagImg from "../FlagImg/FlagImg";
 import GameForm from "../GameForm/GameForm";
 import { useState } from "react";
 
-const GameInterface = ({ gameCountry, onCorrectGuess, onGameEnd }) => {
+const GameInterface = ({ gameCountry, onCorrectGuess, onGameEnd, highscore }) => {
 
     // If country is not fetched display message:
     if (!gameCountry) {
@@ -23,6 +23,8 @@ const GameInterface = ({ gameCountry, onCorrectGuess, onGameEnd }) => {
     const [gameOver, setGameOver] = useState(false);
     
     const [finalScore, setFinalScore] = useState(0);
+
+    const [isNewHighscore, setIsNewHighscore] = useState(false);
 
     // Handle user result (if correct or wrong)
     const handleResult = (guess) => {
@@ -56,6 +58,7 @@ const GameInterface = ({ gameCountry, onCorrectGuess, onGameEnd }) => {
             // Updates result with user result and correct answer
             const score = results.length;
             setFinalScore(score);
+            setIsNewHighscore(score > highscore);
 
             const updatedResults = {
                 score: score,
@@ -75,6 +78,7 @@ const GameInterface = ({ gameCountry, onCorrectGuess, onGameEnd }) => {
         setFeedback("");
         setGameOver(false);
         onCorrectGuess();
+        setIsNewHighscore(false);
     }
 
     return (
@@ -107,6 +111,12 @@ const GameInterface = ({ gameCountry, onCorrectGuess, onGameEnd }) => {
                                     <span className="text-lightgray-600">final score: </span>
                                     <span className="text-red-500 font-bold">{finalScore}</span>
                                 </p>
+
+                                {isNewHighscore && (
+                                    <p className="text-sm uppercase tracking-wide mt-2">
+                                        <span className="text-yellow-600 font-bold">New Highscore! </span>
+                                    </p>
+                                )}
                             </section>
                     </div>
                 )}
