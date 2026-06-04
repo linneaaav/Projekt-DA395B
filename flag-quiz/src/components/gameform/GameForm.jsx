@@ -17,11 +17,11 @@ const GameForm = ({ countryName, onFormSubmit }) => {
     };
 
     return(
-        <form onSubmit={onSubmitGuess} className="w-full max-w-md mx-auto space-y-4">
+        <form onSubmit={onSubmitGuess} className="w-full max-w-sm sm:max-w-md lg:max-w-lg mx-auto space-y-4">
             <div className="mb-3">
                 <input 
                     type="text" 
-                    className="w-xs my-2 px-4 py-2 border border-gray rounded-md bg-gray-800 text-white" 
+                    className="w-full my-2 px-4 py-2 border border-gray rounded-md bg-gray-800 text-white" 
                     placeholder="Name the country..." 
                     value={userGuess}
                     onChange={(e) => setUserGuess(e.target.value)}
@@ -30,7 +30,7 @@ const GameForm = ({ countryName, onFormSubmit }) => {
             </div>
             <button 
                 type="submit" 
-                className="w-xs py-2 bg-blue-500 hover:opacity-70 border border-gray text-black rounded-md cursor-pointer">
+                className="w-full py-2 bg-blue-500 hover:opacity-70 border border-gray text-black rounded-md cursor-pointer">
                     Guess!
             </button>
         </form>

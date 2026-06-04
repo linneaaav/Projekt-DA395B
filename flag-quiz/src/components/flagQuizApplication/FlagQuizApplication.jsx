@@ -68,8 +68,8 @@ const FlagQuizApplication = () => {
     };
         
     return (
-        <div className="bg-gray-900 max-w-screen flex flex-col items-center">
-            <section className="w-full max-w-lg rounded-xl border border-yellow-500 bg-gray-800 p-4 m-4">
+        <div className="min-h-screen bg-gray-900 max-w-screen flex flex-col items-center px-4 py-4 sm:px-6 lg:px-8">
+            <section className="w-full max-w-sm sm:max-w-md lg:max-w-lg rounded-xl border border-yellow-500 bg-gray-800 p-3 sm:p-4 mb-4">
                 <p className="text-sm uppercase tracking-wide">
                     <span className="text-lightgray-600">Highscore: </span> 
                     <span className="text-yellow-600 font-bold">{highscore}</span>

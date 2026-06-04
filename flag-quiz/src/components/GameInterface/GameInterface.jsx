@@ -82,11 +82,11 @@ const GameInterface = ({ gameCountry, onCorrectGuess, onGameEnd, highscore }) =>
     }
 
     return (
-        <div className="bg-gray-800 flex flex-col items-center h-screen">
+        <div className="w-full flex flex-col items-center text-center">
             <h1>Flag Quiz</h1>
 
             {!gameOver && (
-                <section className="w-full max-w-lg rounded-xl border border-blue-500 bg-gray-800 p-4 m-4">
+                <section className="w-full max-w-sm sm:max-w-md lg:max-w-lg rounded-xl border border-blue-500 bg-gray-800 p-3 sm:p-4 mb-4">
                     <p className="text-sm uppercase tracking-wide">
                         <span className="text-lightgray-600">Points: </span>
                         <span className="text-green-600 font-bold">{results.length}</span>
@@ -94,7 +94,7 @@ const GameInterface = ({ gameCountry, onCorrectGuess, onGameEnd, highscore }) =>
                 </section>
             )}
             
-            <section className="py-5 bg-gray-700 w-lg">
+            <section className="w-full max-w-sm sm:max-w-md lg:max-w-lg bg-gray-700 rounded-xl px-4 py-5 sm:px-6">
                 <h2>Guess the flag!</h2>
 
                 <FlagImg flagUrl={gameCountry.flags.png} flagAlt={`Flag of ${gameCountry.flags.alt}`}/>
@@ -106,7 +106,7 @@ const GameInterface = ({ gameCountry, onCorrectGuess, onGameEnd, highscore }) =>
                 {gameOver && (
                     <div>
                         <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer" onClick={restartGame}>Play Again</button>
-                            <section className="w-full max-w-lg rounded-xl border border-red-500 bg-gray-800 p-4 mt-6">
+                            <section className="w-full max-w-sm sm:max-w-md lg:max-w-lg rounded-xl border border-red-500 bg-gray-800 p-4 mt-6">
                                 <p className="text-sm uppercase tracking-wide">
                                     <span className="text-lightgray-600">final score: </span>
                                     <span className="text-red-500 font-bold">{finalScore}</span>
