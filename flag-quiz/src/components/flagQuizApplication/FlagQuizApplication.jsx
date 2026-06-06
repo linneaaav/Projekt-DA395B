@@ -15,6 +15,14 @@ const FlagQuizApplication = () => {
     // useState to handle error message
     const [error, setError] = useState("");
 
+    // useState to handle highscore
+    const [highscore, setHighscore] = useState(() => {
+
+        // Check if any highscores saved in localStorage
+        const savedHighscore = localStorage.getItem("flagQuizHighscore");
+        return savedHighscore ? parseInt(savedHighscore, 10) : 0;
+    })
+
     useEffect(() => {
         const getCountries = async () => {
             try {
@@ -42,13 +50,32 @@ const FlagQuizApplication = () => {
         setCountry(newCountry);
     };
 
+    // Check final score of game
     const handleGameEnd = (updatedResults) => {
         console.log("Game Over! ", updatedResults);
+
+        const finalScore = updatedResults.score;
+
+        // If final score is higher than highscore, save to localStorage
+        if (finalScore > highscore) {
+            setHighscore(finalScore);
+            localStorage.setItem("flagQuizHighscore", finalScore.toString());
+            console.log("New highscore!", finalScore);
+        } else {
+            // Return this
+            console.log(`Your final score this round is: ${finalScore} \n Your current highscore is still ${highscore}`)
+        }
     };
         
     return (
-        <div className="bg-gray-900 max-w-screen">
-            <GameInterface gameCountry={country} onCorrectGuess={randomizeCountry} onGameEnd={handleGameEnd} />
+        <div className="bg-gray-900 max-w-screen flex flex-col items-center">
+            <section className="w-full max-w-lg rounded-xl border border-yellow-500 bg-gray-800 p-4 m-4">
+                <p className="text-sm uppercase tracking-wide">
+                    <span className="text-lightgray-600">Highscore: </span> 
+                    <span className="text-yellow-600 font-bold">{highscore}</span>
+                </p>
+            </section>
+            <GameInterface gameCountry={country} onCorrectGuess={randomizeCountry} onGameEnd={handleGameEnd} highscore={highscore} />
         </div>
     );
 };
