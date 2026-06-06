@@ -13,7 +13,6 @@ This project's purpose is to expand current knowledge of country flags and other
 * **Data Storage**: The application will store user results locally on the browser using localStorage.
 * **Responsive design**: The application will be fully responsive in order to being able to play from any device.
 
---
 
 ## Tool Comparison
 
