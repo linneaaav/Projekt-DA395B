@@ -2,7 +2,7 @@ import FlagImg from "../FlagImg/FlagImg";
 import GameForm from "../GameForm/GameForm";
 import { useState } from "react";
 
-const GameInterface = ({ gameCountry, onCorrectGuess, onGameEnd }) => {
+const GameInterface = ({ gameCountry, onCorrectGuess, onGameEnd, highscore }) => {
 
     // If country is not fetched display message:
     if (!gameCountry) {
@@ -21,6 +21,10 @@ const GameInterface = ({ gameCountry, onCorrectGuess, onGameEnd }) => {
 
     // Game round useState
     const [gameOver, setGameOver] = useState(false);
+    
+    const [finalScore, setFinalScore] = useState(0);
+
+    const [isNewHighscore, setIsNewHighscore] = useState(false);
 
     // Handle user result (if correct or wrong)
     const handleResult = (guess) => {
@@ -52,8 +56,12 @@ const GameInterface = ({ gameCountry, onCorrectGuess, onGameEnd }) => {
             setGameOver(true);
 
             // Updates result with user result and correct answer
+            const score = results.length;
+            setFinalScore(score);
+            setIsNewHighscore(score > highscore);
+
             const updatedResults = {
-                score: results.length,
+                score: score,
                 userGuess: guess,
                 correctAnswer: gameCountry.name.common,
             };
@@ -70,11 +78,21 @@ const GameInterface = ({ gameCountry, onCorrectGuess, onGameEnd }) => {
         setFeedback("");
         setGameOver(false);
         onCorrectGuess();
+        setIsNewHighscore(false);
     }
 
     return (
         <div className="bg-gray-800 flex flex-col items-center h-screen">
             <h1>Flag Quiz</h1>
+
+            {!gameOver && (
+                <section className="w-full max-w-lg rounded-xl border border-blue-500 bg-gray-800 p-4 m-4">
+                    <p className="text-sm uppercase tracking-wide">
+                        <span className="text-lightgray-600">Points: </span>
+                        <span className="text-green-600 font-bold">{results.length}</span>
+                    </p>
+                </section>
+            )}
             
             <section className="py-5 bg-gray-700 w-lg">
                 <h2>Guess the flag!</h2>
@@ -85,8 +103,23 @@ const GameInterface = ({ gameCountry, onCorrectGuess, onGameEnd }) => {
 
                 {!gameOver && <GameForm countryName={gameCountry.name.common} onFormSubmit={handleResult} />}
 
-                {gameOver && <button onClick={restartGame} className="w-xs py-2 bg-blue-500 hover:opacity-70 border border-gray text-black text-xl rounded-md cursor-pointer">Play Again</button>}
-                
+                {gameOver && (
+                    <div>
+                        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer" onClick={restartGame}>Play Again</button>
+                            <section className="w-full max-w-lg rounded-xl border border-red-500 bg-gray-800 p-4 mt-6">
+                                <p className="text-sm uppercase tracking-wide">
+                                    <span className="text-lightgray-600">final score: </span>
+                                    <span className="text-red-500 font-bold">{finalScore}</span>
+                                </p>
+
+                                {isNewHighscore && (
+                                    <p className="text-sm uppercase tracking-wide mt-2">
+                                        <span className="text-yellow-600 font-bold">New Highscore! </span>
+                                    </p>
+                                )}
+                            </section>
+                    </div>
+                )}
             </section>
         </div>
     );
