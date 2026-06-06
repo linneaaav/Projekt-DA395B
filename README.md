@@ -15,21 +15,30 @@ This project's purpose is to expand current knowledge of country flags and other
 
 --
 
-## Framework Comparison
-[INCOMING]
+## Tool Comparison
 
--- 
+### Framework Comparison
+We choes **React** as our core framework
 
-## Git Cheat Sheet (For personal development)
+Initially, we considered using **Angular**. However, Angular is a framework with a steep learning curve and heavy boilerplate, making it over-engineered for our project [1]. React's component-based, library-first approach allowed us to get started quickly without the steep learning curve and heavy architectural structure [2]. 
 
-### Branching Management
-* `git branch` - Lists all local branches 
-* `git checkout -b [new-branch-name]` - Creates a new branch named [new-branch-name] from current branch. **IMPORTANT**: In creation of new branch, navigate to checkout `develop`.
-* `git checkout [branch-name]` - Switches branch to [branch-name].
-* `git push -u origin [branch-name]` - Pushes [branch-name] to origin with current commits. 
+Compared to **Vue**, React's massive ecosystem and straightforward integration with external APIs provided a seamless development for our specific use case [3].
 
-### Staging, Committing & Pushing
-* `git status` - Shows current status of modified, tracked and untracked files
-* `git add.` - Stages all changes 
-* `git commit -m "[message]"` - Saves staged changes to local repo history
-* `git push` - Pushes all commits to current branch
+### Build Tool
+Instead of traditional bundling tools like Create React App (Webpack), we utilized **Vite** to set up our development environment. We chose Vite in order to build a modern web standard leveraging ES modules, offering fast Hot Module Replacement (HMR) and significantly faster build times [4].
+
+### Styling
+For user interface, we implemeneted **Tailwind CSS**
+
+We explicitly avoided component-based styling libraries like **Bootstrap** or **Material UI**. These libraries heavily rely on pre-designed, rigid components that did not align with our vision of our application [5] [6]. Tailwind's utility-first approach allowed us to rapidly build a clean, custom and responsive interface directly in our markup withoutbeing constrained by an external library's component structure [7].
+
+--
+
+### References
+* **[1] Angular Documentation:** "What is Angular?" [https://angular.dev/overview] (https://angular.dev/overview)
+* **[2] React Documentation:** "React - The library for web and native user interfaces" [https://react.dev] (https://react.dev)
+* **[3] Vue Documentation:** "Vue - Introduction" [https://vuejs.org/guide/introduction] (https://vuejs.org/guide/introduction)
+* **[4] Vite Documentation:** "The Build Tool for the Web" [https://vite.dev] (https://vite.dev)
+* **[5] Bootstrap Documentation:** "Build fast, responsive sites with Bootstrap" [https://getboostrap.com] (https://getbootstrap.com)
+* **[6] Material UI Documentation:** "Ready to use Material Design components" [https://mui.com/material-ui] (https://mui.com/material-ui)
+* **[7] Tailwind CSS Documentation:** "Rapidly build modern websites without ever leaving your HTML" [https://taildwindcss.com] (https://tailwindcss.com)
