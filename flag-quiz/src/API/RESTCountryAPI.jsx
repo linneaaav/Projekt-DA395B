@@ -16,7 +16,6 @@ export async function FetchCountries(){
             throw new Error(`Fel vid anrop: ${response.status}`);
         }
         const result = await response.json();
-        console.log(result.data.objects);
 
         // Returns all countries in an array
         return result.data.objects;
