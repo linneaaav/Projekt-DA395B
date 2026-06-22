@@ -4,7 +4,7 @@ const BASE_URL = `https://api.restcountries.com/countries/v5`;
 export async function FetchCountries(){
     try {
         // Fetch all countries from API
-        const response = await fetch(`${BASE_URL}?response_fields=names.common%2Cflag.url_png&limit=100&pretty=1`, { // Able to fetch other attributes like capital, etc.
+        const response = await fetch(`${BASE_URL}?response_fields=names.common%2Cflag.url_png%2Ccodes.alpha_2&limit=100&pretty=1`, { // Able to fetch other attributes like capital, etc.
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${API_KEY}`,
