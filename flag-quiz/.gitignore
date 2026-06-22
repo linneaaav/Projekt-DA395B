@@ -1,3 +1,6 @@
+# Enviorment variables
+.env
+
 # Logs
 logs
 *.log

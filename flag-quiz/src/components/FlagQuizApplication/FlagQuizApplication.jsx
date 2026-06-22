@@ -29,6 +29,7 @@ const FlagQuizApplication = () => {
                 // Use function FetchCountries() to get JSON-object
                 const data = await FetchCountries();
                 // All countries saved into an array
+                console.log(data);
                 setAllCountries(data);
 
                 // Use function getRandomCountry() to randomize the first country
