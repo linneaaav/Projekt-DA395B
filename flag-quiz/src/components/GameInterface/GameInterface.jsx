@@ -28,9 +28,9 @@ const GameInterface = ({ gameCountry, onCorrectGuess, onGameEnd, highscore }) =>
 
     // Handle user result (if correct or wrong)
     const handleResult = (guess) => {
-        if (guess.trim().toLowerCase() === gameCountry.name.common.trim().toLowerCase()){
+        if (guess.trim().toLowerCase() === gameCountry.names.common.trim().toLowerCase()){
             const answer = {
-                country: gameCountry.name.common,
+                country: gameCountry.names.common,
                 guess: guess,
                 isCorrect: true
             };
@@ -51,7 +51,7 @@ const GameInterface = ({ gameCountry, onCorrectGuess, onGameEnd, highscore }) =>
         } else {
 
             // User feedback with a incorrect answer
-            setFeedback(`Tough! ${guess} is not correct... \n The correct answer was ${gameCountry.name.common}.`);
+            setFeedback(`Tough! ${guess} is not correct... \n The correct answer was ${gameCountry.names.common}.`);
 
             setGameOver(true);
 
@@ -63,7 +63,7 @@ const GameInterface = ({ gameCountry, onCorrectGuess, onGameEnd, highscore }) =>
             const updatedResults = {
                 score: score,
                 userGuess: guess,
-                correctAnswer: gameCountry.name.common,
+                correctAnswer: gameCountry.names.common,
             };
 
             // Handles end game 
@@ -97,11 +97,11 @@ const GameInterface = ({ gameCountry, onCorrectGuess, onGameEnd, highscore }) =>
             <section className="py-5 bg-gray-700 w-lg">
                 <h2>Guess the flag!</h2>
 
-                <FlagImg flagUrl={gameCountry.flags.png} flagAlt={`Flag of ${gameCountry.flags.alt}`}/>
+                <FlagImg flagUrl={gameCountry.flag.url_png} flagAlt={`Flag of ${gameCountry.codes.alpha_2}`}/>
 
                 {feedback && <p className={gameOver ? "py-3 text-red-600 font-semibold text-xl whitespace-pre-line" : "py-3 text-green-600 font-semibold text-xl"}>{feedback}</p>}
 
-                {!gameOver && <GameForm countryName={gameCountry.name.common} onFormSubmit={handleResult} />}
+                {!gameOver && <GameForm countryName={gameCountry.names.common} onFormSubmit={handleResult} />}
 
                 {gameOver && (
                     <div>
