@@ -1,5 +1,5 @@
 import FlagImg from "../FlagImg/FlagImg";
-import GameForm from "../GameForm/GameForm";
+import GameForm from "../gameform/GameForm";
 import { useState } from "react";
 
 const GameInterface = ({ gameCountry, onCorrectGuess, onGameEnd, highscore }) => {
