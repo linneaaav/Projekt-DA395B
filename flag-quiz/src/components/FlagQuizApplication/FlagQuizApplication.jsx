@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { FetchCountries } from "./../../api/RESTCountryAPI";
+import { FetchCountries } from "./../../API/RESTCountryAPI";
 import { getRandomCountry } from "./../../utils/getRandomCountry";
 import GameInterface from "../GameInterface/GameInterface";
 
