@@ -9,7 +9,7 @@ This project's purpose is to expand current knowledge of country flags and other
 * **Target Audience**: Students or simply people who want to learn all the flags in the world.
 
 ## Features & API Integration
-* **External API**: REST Countries API [How we will use it will come later].
+* **External API**: REST Countries API 
 * **Data Storage**: The application will store user results locally on the browser using localStorage.
 * **Responsive design**: The application will be fully responsive in order to being able to play from any device.
 
@@ -37,7 +37,14 @@ cd flag-quiz
 ```bash
 npm install
 ```
-5. **Start the application**: In order to start the application, run the following command in your terminal:
+
+5. ***Environment Configuration**: Create a .env file in the root of the flag-quiz folder and add your REST Countries API key: 
+```bash
+VITE_REST_COUNTRIES_API_KEY=[your_api_key_here]
+```
+Replace [your_api_key_here] with a valid API key.
+
+6. **Start the application**: In order to start the application, run the following command in your terminal:
 ```bash
 npm run dev
 ```
