@@ -38,7 +38,7 @@ cd flag-quiz
 npm install
 ```
 
-5. ***Environment Configuration**: Create a .env file in the root of the flag-quiz folder and add your REST Countries API key: 
+5. **Environment Configuration**: Create a `.env` file in the root of the `flag-quiz` folder and add your REST Countries API key: 
 ```bash
 VITE_REST_COUNTRIES_API_KEY=[your_api_key_here]
 ```
